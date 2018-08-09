@@ -2,7 +2,7 @@
 
 K8S_VERSION="v1.11.1"
 OLD_PER_STR="smartyhero/k8simage"
-K8S_IMG_URL="ks.gcr.io"
+K8S_IMG_URL="k8s.gcr.io"
 
 COREDNS_VERSION="1.1.3"
 ETCD_VERSION="3.2.18"
@@ -15,6 +15,9 @@ node() {
 
 	docker pull ${OLD_PER_STR}-${K8S_VERSION}:pause
 	docker tag ${OLD_PER_STR}-${K8S_VERSION}:pause ${K8S_IMG_URL}/pause:${PAUSE_VERSION}
+	
+	docker pull ${OLD_PER_STR}-${K8S_VERSION}:flannel
+	docker tag ${OLD_PER_STR}-${K8S_VERSION}:flannel quay.io/coreos/flannel:v0.10.0-amd64
 }
 
 
